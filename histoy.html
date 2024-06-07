@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            margin: 100px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #1877f2;
+        }
+        input[type="date"] {
+            width: calc(100% - 40px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            width: calc(100% - 40px);
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #1877f2;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #1659a4;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>تسجيل الدخول</h1>
+    <form id="loginForm" onsubmit="checkBirthday(event)">
+        <input type="date" id="birthdate" name="birthdate" required>
+        <button type="submit">تسجيل الدخول</button>
+        <p id="errorMessage" class="error-message"></p>
+    </form>
+</div>
+
+<script>
+    function checkBirthday(event) {
+        event.preventDefault();
+        var birthdate = document.getElementById('birthdate').value;
+        var inputDate = new Date(birthdate);
+        var currentDate = new Date('2001-12-26'); // تاريخ الولادة المطلوب 26/12/2001
+
+        // تحقق من أن التاريخ المدخل هو 26/12/2001
+        if (inputDate.getFullYear() === 2001 && inputDate.getMonth() === 11 && inputDate.getDate() === 26) {
+            alert('تم تسجيل الدخول بنجاح!');
+            // هنا يمكن توجيه المستخدم إلى الصفحة الرئيسية أو أي صفحة أخرى
+            window.location.href = 'index.html'; // يمكن تغيير هذا الرابط إلى الصفحة المراد توجيه المستخدم إليها
+        } else {
+            document.getElementById('errorMessage').innerText = '  لا يمكنك الدخول، تم تصميم الموقع لشخص معين فقط! قم بادخال التاريخ الصحيح ';
+        }
+    }
+</script>
+
+</body>
+</html>
